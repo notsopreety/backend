@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sawmer backend</title>
+  <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: "Minecraft", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      background-color: #f4f4f4;
+      color: #222;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #1c1c1c;
+        color: #f0f0f0;
+      }
+    }
+
+    h1 {
+      font-size: 4rem;
+      margin: 0;
+      text-shadow: 2px 2px 0 #00000066;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    #time {
+      margin-top: 14px;
+      font-size: 1.6rem;
+      opacity: 0.9;
+      text-shadow: 1px 1px 0 #00000066;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .contact-btn {
+      margin-top: 25px;
+      padding: 12px 28px;
+      font-size: 1rem;
+      background-color: #3c8527;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: "Minecraft", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 0 #2a5e1c;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #234d17;
+    }
+
+    .contact-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #234d17;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Hello World</h1>
+  <div id="time"></div>
+  <button class="contact-btn" onclick="window.open('https://discord.com/users/931511745284038696', '_blank')">
+    Contact
+  </button>
+
+  <script>
+    function updateTime() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+      document.getElementById("time").textContent = timeString;
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000);
+
+  </script>
+</body>
+
+</html>
