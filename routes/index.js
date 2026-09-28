@@ -5,6 +5,7 @@ const ApiResponse = require("../utils/apiResponse");
 // Explicit route imports (required for Vercel / serverless static analysis & bundling)
 const aiRoutes = require("./ai.routes");
 const spotifyRoutes = require("./download/spotify.routes");
+const pinterestRoutes = require("./download/pinterest.routes");
 const healthRoutes = require("./health.routes");
 const patroRoutes = require("./patro.routes");
 
@@ -20,6 +21,12 @@ const routeDefinitions = [
     mountPath: "/download/spotify",
     routeModule: spotifyRoutes,
     file: "download/spotify.routes.js",
+  },
+  {
+    name: "download/pinterest",
+    mountPath: "/download/pinterest",
+    routeModule: pinterestRoutes,
+    file: "download/pinterest.routes.js",
   },
   {
     name: "health",

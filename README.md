@@ -16,6 +16,7 @@ backend/
 │   └── cache.config.js        # Response caching config & TTL presets
 ├── controllers/
 │   ├── download/
+│   │   ├── pinterest.controller.js # Pinterest download controller
 │   │   └── spotify.controller.js # Spotify download controller
 │   ├── ai.controller.js       # AI chat controller (GET & POST) and models catalog
 │   ├── health.controller.js   # Health and system monitoring controller
@@ -28,13 +29,15 @@ backend/
 │   └── validate.js            # Universal Zod schema validator (query, body, params)
 ├── routes/
 │   ├── download/              # Nested route directory!
-│   │   └── spotify.routes.js  # Mounts automatically at /api/download/spotify
-│   ├── index.js               # Central recursive directory router
+│   │   ├── pinterest.routes.js # Mounts at /api/download/pinterest
+│   │   └── spotify.routes.js  # Mounts at /api/download/spotify
+│   ├── index.js               # Central routes registry
 │   ├── ai.routes.js           # AI chat and models endpoints (/api/ai)
 │   ├── health.routes.js       # Healthcheck routes (/api/health)
 │   └── patro.routes.js        # Nepali calendar route (/api/patro)
 ├── schemas/
 │   ├── download/
+│   │   ├── pinterest.schema.js # Pinterest URL schema
 │   │   └── spotify.schema.js  # Spotify URL schema
 │   ├── common.schema.js       # Reusable schemas (URL, pagination, IDs)
 │   ├── ai.schema.js           # AI chat validation schemas
@@ -42,6 +45,7 @@ backend/
 │   └── index.js               # Schemas export index
 ├── services/
 │   ├── download/
+│   │   ├── pinterest.service.js # PinsDownload scraper & media parser
 │   │   └── spotify.service.js # MusicFab Spotify API scraper & retry logic
 │   ├── ai.service.js          # DuckGPT / Workers AI service logic
 │   ├── patro.service.js       # Daily Nepali calendar scraping and parsing
@@ -218,3 +222,6 @@ npm start
 - `GET /api/ai/models` — Supported AI Models Catalog
 - `GET /api/download/spotify?url=...` — Spotify Media & Download Extractor (Cached 5m)
 - `POST /api/download/spotify` — Spotify Media & Download Extractor JSON (Cached 5m)
+- `GET /api/download/pinterest?url=...` — Pinterest Image & Video Media Extractor (Cached 5m)
+- `POST /api/download/pinterest` — Pinterest Image & Video Media Extractor JSON (Cached 5m)
+
